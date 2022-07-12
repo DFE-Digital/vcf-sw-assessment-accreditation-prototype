@@ -1,0 +1,56 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Sign in to your social worker assessment account
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="/booking/version-2/booking-method" method="post">
+        <div class="govuk-form-group">
+
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Sign in to your social worker assessment account
+              </h1>
+            </legend>
+
+            <p class="govuk-body">You must sign in to or register an account to book an assessment.</p>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="signin_email">
+                Username
+              </label>
+              <input class="govuk-input govuk-!-width-three-quarters" id="signin_email" name="signin_email" type="email" autocomplete="off" onkeydown="signIn()">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="signin_password">
+                Password
+              </label>
+              <input class="govuk-input govuk-!-width-three-quarters" id="signin_password" name="signin_password" type="password" autocomplete="off" onkeydown="signIn()">
+            </div>
+
+            <div class="form-group">
+              <!-- <input type="submit" id="signInBtn" name="submit" value="Sign in" class="govuk-button" onclick="signInBtn()"> -->
+              <button id="signInBtn" disabled="disabled" aria-disabled="true" class="govuk-button govuk-button--disabled" data-module="govuk-button">Sign in</button>
+
+              <p class="govuk-body">
+              	<a href="#" id="register" class="button-link">Create account</a>
+            	</p>
+
+              <p class="govuk-body"><a href="#" id="forgotten_password">Forgotten your password?</a></p>
+            </div>
+
+          </fieldset>
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+{% endblock %}

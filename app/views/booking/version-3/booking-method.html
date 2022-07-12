@@ -1,0 +1,54 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  How would you like to take the two parts of the assessment?
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="/booking/version-2/booking-method/answer" method="post">
+        <div class="govuk-form-group">
+
+          <!-- List of booking dates -->
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                How would you like to take the two parts of the assessment?
+              </h1>
+            </legend>
+
+            <div class="govuk-radios" id="bookingMethod" data-module="govuk-radios">
+
+              <!-- Together -->
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="togetherRadio" name="booking-method" type="radio" value="Together" onclick="getBookingMethod()">
+                <label class="govuk-label govuk-radios__label" for="togetherRadio">
+                  Together
+                </label>
+              </div>
+
+              <!-- Separately -->
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="separatelyRadio" name="booking-method" type="radio" value="Separately" onclick="getBookingMethod()">
+                <label class="govuk-label govuk-radios__label" for="separatelyRadio">
+                  Separately
+                </label>
+              </div>
+            </div>
+
+          </fieldset>
+        </div>
+
+        <hr />
+
+        <button id="getBookingMethodBtn" disabled="disabled" aria-disabled="true" class="govuk-button govuk-button--disabled" type="submit" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

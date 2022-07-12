@@ -1,7 +1,7 @@
 # vcf-sw-assessment-accreditation-premigration
 
-#Install the dependencies:
+# Install the dependencies:
 yarn install
 
-##start the app locally:
+## start the app locally:
 yarn start

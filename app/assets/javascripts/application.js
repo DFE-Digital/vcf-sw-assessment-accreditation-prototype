@@ -69,7 +69,7 @@ function signIn() {
   if (signInEmail !== '' && signInPassword !== '') {
     console.log('Ok all good');
     const attr = signInBtn.getAttributeNode("disabled");
-    signInBtn.removeAttributeNode(attr);
+    if (attr) signInBtn.removeAttributeNode(attr);
     signInBtn.setAttribute("aria-disabled", "false");
     signInBtn.classList.remove("class", "govuk-button--disabled");
   } else {
