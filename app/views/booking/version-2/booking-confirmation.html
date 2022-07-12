@@ -1,0 +1,129 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Booking confirmation
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l">Check your answers before sending your booking request</h1>
+
+      <h2 class="govuk-heading-m">Booking details</h2>
+
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Booking request reference number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            502135326
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Assessment type
+          </dt>
+          <dd class="govuk-summary-list__value">
+            SWAAS
+          </dd>
+        </div>
+
+        <!-- Booking method -->
+        <div class="govuk-summary-list__row hidden" id="bookingMethod">
+          <dt class="govuk-summary-list__key">
+            Booking method
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <span id="bookingMethodSelected"></span>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="booking-method">
+              Change<span class="govuk-visually-hidden"> booking type</span>
+            </a>
+          </dd>
+        </div>
+
+        <!-- Assessment date - Together -->
+        <div class="govuk-summary-list__row hidden" id="bookingTogetherDate">
+          <dt class="govuk-summary-list__key">
+            Assessment date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <div id="bookingTogetherDateSelected"></div>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="booking-dates">
+              Change<span class="govuk-visually-hidden"> assessment date</span>
+            </a>
+          </dd>
+        </div>
+
+        <!-- knowledge Assessment date -->
+        <div class="govuk-summary-list__row hidden" id="bookingKADate">
+          <dt class="govuk-summary-list__key">
+            Knowledge assessment date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <div id="bookingKADateSelected"></div>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="booking-knowledge-assessment">
+              Change<span class="govuk-visually-hidden"> knowledge assessment date</span>
+            </a>
+          </dd>
+        </div>
+
+        <!-- Simulated practice Assessment date -->
+        <div class="govuk-summary-list__row hidden" id="bookingScenarioDate">
+          <dt class="govuk-summary-list__key">
+            Simulated practice Assessment date
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <div id="bookingScenarioDateSelected"></div>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="booking-scenario">
+              Change<span class="govuk-visually-hidden"> simulated practice assessment date</span>
+            </a>
+          </dd>
+        </div>
+
+        <!-- supervisor's email -->
+        <div class="govuk-summary-list__row hidden" id="supervisorEmail">
+          <dt class="govuk-summary-list__key">
+            Your supervisor's email address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <span id="supervisorEmailValue"></span>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="let-supervisor-know">
+              <span id="changeOrAdd">Change</span><span class="govuk-visually-hidden"> your supervisor's email</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+      <h2 class="govuk-heading-m">Now send your application</h2>
+
+      <p class="govuk-body">By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+
+      <form action="booking-dashboard" method="post" novalidate>
+
+        <input type="hidden" name="answers-checked" value="true">
+
+        <button class="govuk-button" data-module="govuk-button">
+          Confirm booking
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

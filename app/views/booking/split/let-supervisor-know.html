@@ -1,0 +1,30 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Booking - let your supervisor know
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-form-group">
+        <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="event-name">
+            Let your supervisor know
+          </label>
+        </h1>
+        <div id="event-name-hint" class="govuk-hint">
+          Supervisor email (optional)
+        </div>
+        <input class="govuk-input" id="supervisor-email" name="supervisor-email-hint" type="text" aria-describedby="supervisor-email-hint">
+      </div>
+
+      <a href="booking-confirmation" class="govuk-button" data-module="govuk-button">
+        Continue
+      </a>
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,52 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Booking method
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="/booking/split/booking-method/answer" method="post">
+        <h1 class="govuk-heading-xl">Booking method</h1>
+        <div class="govuk-form-group">
+
+          <!-- List of booking dates -->
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h2 class="govuk-fieldset__heading">
+                Would you prefer to booking your assessment all-in-one go or split them up?
+              </h2>
+            </legend>
+
+            <div class="govuk-radios" id="bookingMethod" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="splitRadio" name="booking-method" type="radio" value="Split">
+                <label class="govuk-label govuk-radios__label" for="splitRadio">
+                  Split
+                </label>
+              </div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="allInOneRadio" name="booking-method" type="radio" value="All in one">
+                <label class="govuk-label govuk-radios__label" for="allInOneRadio">
+                  All-in-one
+                </label>
+              </div>
+            </div>
+
+          </fieldset>
+        </div>
+
+        <hr />
+
+        <button class="govuk-button" type="submit" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

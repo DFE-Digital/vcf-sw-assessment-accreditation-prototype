@@ -1,0 +1,73 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Feedback - Expanded - Standard met
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">Your results</h1>
+      <p class="govuk-body">You have met the standard for accreditation.</p>
+
+      <h2 class="govuk-heading-l">Overall assessment result</h2>
+      <p class="govuk-body">Met.</p>
+
+      <!-- Knowledge assessment results -->
+      <h2 class="govuk-heading-l">Knowledge assessment results</h2>
+      <p class="govuk-body">Met.</p>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-half">
+          <div class="govuk-notification-banner govuk-notification-banner--success" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+            <div class="govuk-notification-banner__content">
+              <p class="govuk-body">General knowledge questions - 75%</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="govuk-grid-column-one-half">
+          <div class="govuk-notification-banner govuk-notification-banner--success" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+            <div class="govuk-notification-banner__content">
+              <p class="govuk-body">Applied knowledge questions - 80%</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Simulated, reflective and written practice assessments -->
+      <h2 class="govuk-heading-l">Simulated, reflective and written practice assessments</h2>
+      <p class="govuk-body">Met.</p>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+          <div class="govuk-notification-banner govuk-notification-banner--success" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+            <div class="govuk-notification-banner__content">
+              <p class="govuk-body">Simulated practice assessment - 83%</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+          <div class="govuk-notification-banner govuk-notification-banner--success" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+            <div class="govuk-notification-banner__content">
+              <p class="govuk-body">Reflective practice assessment - 80%</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="govuk-grid-column-one-third">
+          <div class="govuk-notification-banner govuk-notification-banner--success" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+            <div class="govuk-notification-banner__content">
+              <p class="govuk-body">Written practice assessment - 85%</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

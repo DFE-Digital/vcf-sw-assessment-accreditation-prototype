@@ -1,0 +1,56 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Book your scenario-based assessment
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">Book your scenario-based assessment</h1>
+      <div class="govuk-form-group">
+
+        <!-- List of booking dates -->
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+
+            <p>you can come back and book this later if you're unsure... Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+            <h2 class="govuk-fieldset__heading">
+              Choose a date from the available list of dates
+            </h2>
+          </legend>
+
+          <!--
+          <div class="govuk-radios" id="date" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="where-do-you-live" name="available-date" type="radio" value="{{ data['Monday, July 4 2022']}}">
+              <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                Monday, July 4 2022
+              </label>
+            </div>
+          </div>
+          -->
+
+          <div class="govuk-radios" id="date" data-module="govuk-radios"></div>
+
+        </fieldset>
+      </div>
+
+      <!-- <div>
+        <select class="" id="date" name="date" value="{{ data['date'] }}" onChange="getSelectedDate(this);">
+          <option value="">-- Select --</option>
+        </select>
+      </div> -->
+
+      <hr />
+
+      <a href="let-supervisor-know" class="govuk-button" data-module="govuk-button">
+        Continue
+      </a>
+    </div>
+  </div>
+
+{% endblock %}

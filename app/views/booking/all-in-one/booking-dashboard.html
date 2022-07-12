@@ -1,0 +1,43 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  All-in-one booking journey
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Lorem ipsum Dashboard
+            </h1>
+          </legend>
+
+          <div id="assessment-hint" class="govuk-hint">
+            <p>You have just booked the following assessment:</p>
+          </div>
+
+          <div class="govuk-panel govuk-panel--confirmation">
+            <h1 class="govuk-panel__title">
+              SWAAS assessment booked
+            </h1>
+            <div class="govuk-panel__body">
+              Your reference number<br><strong>502135326</strong>
+            </div>
+          </div>
+
+        </fieldset>
+      </div>
+
+      <a href="booking-dates" class="govuk-button" data-module="govuk-button">
+        Change booking
+      </a>
+    </div>
+  </div>
+
+{% endblock %}

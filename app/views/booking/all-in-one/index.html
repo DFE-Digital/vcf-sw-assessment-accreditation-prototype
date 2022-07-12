@@ -1,0 +1,58 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  All-in-one booking journey
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Lorem ipsum Dashboard
+            </h1>
+          </legend>
+
+          <div id="assessment-hint" class="govuk-hint">
+            <p>Blah blah to explain what this page is and what the user needs to do.</p>
+            <p>Select one option</p>
+          </div>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="swaas" name="assessment-type" type="radio" value="SWAAS" aria-describedby="swaas-hint" {{ checked("assessment-type", "SWAAS") }}>
+              <label class="govuk-label govuk-radios__label" for="swaas">
+                SWAAS
+              </label>
+              <div id="swaas-hint" class="govuk-hint govuk-radios__hint">
+                SWAAS Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </div>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="somethingSlse" name="assessment-type" type="radio" value="Something else" aria-describedby="something-else-hint" {{ checked("assessment-type", "Something else") }}>
+              <label class="govuk-label govuk-radios__label" for="somethingElse">
+                Something else
+              </label>
+              <div id="something-else-hint" class="govuk-hint govuk-radios__hint">
+                Something else Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </div>
+            </div>
+          </div>
+
+
+        </fieldset>
+      </div>
+
+       <!-- data="{{ data['assessmentBooked'] }}" -->
+
+      <a href="assessment" class="govuk-button" data-module="govuk-button">
+        SWAAS assessment
+      </a>
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+.blue-grid-box {
+  // color: #0b0c0c;
+  font-family: "GDS Transport",arial,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 18px;
+  font-size: 1.125rem;
+  line-height: 1.1111111111;
+  padding: 20px;
+  display: block;
+  margin: 0;
+  color: #fff;
+  background-color: #1d70b8;
+  text-align: center;
+  text-decoration: none;
+  p, h2, h3, h4, h5, h6 { color: #fff; }
+  p { border-top: 1px solid #fff; padding-top: 10px; }
+}
+
+
+
+// MISC. HELPERS
+hr {
+  margin: 30px 0 20px 0;
+}
+
+// Push every right
+.push_right_parent {
+  display: flex;
+  .push_right_child {
+    margin-right: auto;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.blue-br {
+  color: #0b0c0c;
+  border-top: 2px solid #1d70b8;
+  margin: 30px 0 30px;
+  width: 100%;
+}

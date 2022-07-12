@@ -1,0 +1,41 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  When would you like to take your simulated practice assessment?
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-form-group">
+
+        <!-- List of booking dates -->
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              When would you like to take your simulated practice assessment?
+            </h1>
+          </legend>
+
+          <div class="govuk-radios" id="date" data-module="govuk-radios"></div>
+
+        </fieldset>
+      </div>
+
+      <hr />
+
+      <div class="govuk-button-group">
+        <a id="scenarioDate" href="let-supervisor-know" disabled="disabled" aria-disabled="true" class="govuk-button govuk-button--disabled" data-module="govuk-button">
+          Continue
+        </a>
+
+        <a href="let-supervisor-know" onclick="skipBookingScenarioDate()" class="govuk-link" data-module="govuk-button">
+          Skip
+        </a>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
