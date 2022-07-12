@@ -37,3 +37,18 @@ router.post('/booking/version-2/booking-method/answer', function (req, res) {
       res.redirect('/booking/version-2/booking-method')
     }
 })
+
+router.post('/booking/version-3/booking-method/answer', function (req, res) {
+    var bookingMethod = req.session.data['booking-method']
+
+    // Check whether the variable matches a condition
+    if (bookingMethod == "Together"){
+      // Send user to next page
+      res.redirect('/booking/version-3/booking-dates')
+    } else if (bookingMethod == "Separately") {
+      res.redirect('/booking/version-3/booking-knowledge-assessment')
+    } else {
+      // Send user to another page
+      res.redirect('/booking/version-3/booking-method')
+    }
+})

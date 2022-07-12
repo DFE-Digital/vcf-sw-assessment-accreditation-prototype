@@ -7,10 +7,12 @@ if (window.console && window.console.info) {
 
 const pageUrl = window.location.pathname.split("/");
 const currentURL = pageUrl[pageUrl.length-1];
+const pageUrlPath = window.location.pathname;
 
 $(document).ready(function () {
   window.GOVUKFrontend.initAll();
   console.log('currentURL', currentURL);
+  console.log('pageUrlPath', pageUrlPath);
 
   // if (currentURL === 'let-supervisor-know') {
   //   const supervisorEmailValue = document.getElementById('supervisor-email').value;
@@ -57,6 +59,10 @@ $(document).ready(function () {
     localStorage.removeItem('bookingScenarioDateSelected');
     localStorage.removeItem('supervisorEmailValue');
   }
+
+  if ((pageUrlPath === '/') || (pageUrlPath === '/booking/version-3/') || (pageUrlPath === '/booking/version-3/start')) {
+    const backLink = document.getElementById('backLink').style.display = 'none';
+  }
 })
 
 
@@ -80,6 +86,7 @@ function signIn() {
   }
 }
 
+// Get the method of booking
 function getBookingMethod() {
   console.log('Booking Method BTN clicked');
   const ele = document.getElementsByName('booking-method');
@@ -159,17 +166,13 @@ function scenarioDate() {
   }
 }
 
-function skipBookingScenarioDate() {
-  localStorage.removeItem('bookingScenarioDateName');
-}
-
 function getSupervisorEmail() {
   const ele = document.getElementById('supervisor-email').value;
   const getSupervisorEmailBtn = document.getElementById('getSupervisorEmailBtn');
 
   if (ele !== '') {
     const attr = getSupervisorEmailBtn.getAttributeNode("disabled");
-    getSupervisorEmailBtn.removeAttributeNode(attr);
+    if (attr) getSupervisorEmailBtn.removeAttributeNode(attr);
     getSupervisorEmailBtn.setAttribute("aria-disabled", "false");
     getSupervisorEmailBtn.classList.remove("class", "govuk-button--disabled");
     localStorage.setItem('supervisorEmailValue', ele);
@@ -179,6 +182,22 @@ function getSupervisorEmail() {
     getSupervisorEmailBtn.classList.add("class", "govuk-button--disabled");
     localStorage.removeItem('supervisorEmailValue');
   }
+}
+
+// Clear all data
+function clearData() {
+  // Remove all stored variable
+  localStorage.removeItem('bookingMethodName');
+  localStorage.removeItem('bookingTogetherDateName');
+  localStorage.removeItem('bookingKADateSelected');
+  localStorage.removeItem('bookingScenarioDateSelected');
+  localStorage.removeItem('supervisorEmailValue');
+  window.location.href = '/data-cleared';
+}
+
+// Skip buttons
+function skipBookingScenarioDate() {
+  localStorage.removeItem('bookingScenarioDateName');
 }
 
 function skipSupervisorEmail() {

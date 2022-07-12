@@ -9,7 +9,7 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form action="/booking/version-2/booking-confirmation" method="post">
+      <form action="/booking/version-3/booking-confirmation" method="post">
         <div class="govuk-form-group">
           <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="event-name">
               What’s your supervisor’s email address?
@@ -19,7 +19,7 @@
           <div id="event-name-hint" class="govuk-hint">
             (optional)
           </div>
-          <input class="govuk-input govuk-!-width-three-quarters" id="supervisor-email" name="supervisor-email" type="email" autocomplete="off" aria-describedby="supervisor-email-hint" onchange="getSupervisorEmail()">
+          <input class="govuk-input govuk-!-width-three-quarters" id="supervisor-email" name="supervisor-email" type="email" autocomplete="off" aria-describedby="supervisor-email-hint" onkeydown="getSupervisorEmail()">
         </div>
 
         <hr />
