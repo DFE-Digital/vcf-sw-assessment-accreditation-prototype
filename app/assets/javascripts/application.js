@@ -60,7 +60,7 @@ $(document).ready(function () {
     localStorage.removeItem('supervisorEmailValue');
   }
 
-  if ((pageUrlPath === '/') || (pageUrlPath === '/booking/version-3/') || (pageUrlPath === '/booking/version-3/start')) {
+  if ((pageUrlPath === '/') || (pageUrlPath === '/booking/version-3/') || (pageUrlPath === '/booking/version-3/start') || (pageUrlPath === '/booking/version-3/data-cleared')) {
     const backLink = document.getElementById('backLink').style.display = 'none';
   }
 })
@@ -116,17 +116,29 @@ function getBookingMethod() {
 
 // function getBookedDatesforTogether() {
 function bookingDate() {
-  console.log('bookingDate called');
+  // console.log('bookingDate called');
   const bookingDate = document.getElementById('bookingDate');
+  // const attrHref = bookingDate.getAttributeNode("href");
   const checked_dateTime = document.querySelector('input[name = "available-date"]:checked');
 
-  if(checked_dateTime != null){
+  console.log('checked_dateTime', checked_dateTime.value);
+
+  if(checked_dateTime !== null){
     localStorage.setItem('bookingTogetherDateName', checked_dateTime.value);
 
-    const attr = bookingDate.getAttributeNode("disabled");
-    if (attr) bookingDate.removeAttributeNode(attr);
+    const attrDisabled = bookingDate.getAttributeNode("disabled");
+    if (attrDisabled) bookingDate.removeAttributeNode(attrDisabled);
     bookingDate.setAttribute("aria-disabled", "false");
     bookingDate.classList.remove("class", "govuk-button--disabled");
+  }
+
+  // const continueBtn = document.getElementById('bookingDate');
+  // const attr = continueBtn.getAttributeNode("href");
+
+  if (checked_dateTime.value === 'Other') {
+    bookingDate.setAttribute("href", "more-booking-dates");
+  } else {
+    bookingDate.setAttribute("href", "let-supervisor-know");
   }
 }
 
@@ -134,17 +146,22 @@ function bookingDate() {
 function kaDate() {
   console.log('kaDate called');
   const kaDate = document.getElementById('kaDate');
-
   const checked_dateTime = document.querySelector('input[name = "available-date"]:checked');
 
   if(checked_dateTime != null){
     // localStorage.setItem('bookingTogetherDateName', checked_dateTime.value);
     localStorage.setItem('bookingKADateSelected', checked_dateTime.value);
 
-    const attr = kaDate.getAttributeNode("disabled");
-    if (attr) kaDate.removeAttributeNode(attr);
+    const attrDisabled = kaDate.getAttributeNode("disabled");
+    if (attrDisabled) kaDate.removeAttributeNode(attrDisabled);
     kaDate.setAttribute("aria-disabled", "false");
     kaDate.classList.remove("class", "govuk-button--disabled");
+  }
+
+  if (checked_dateTime.value === 'Other') {
+    kaDate.setAttribute("href", "more-kabooking-dates");
+  } else {
+    kaDate.setAttribute("href", "let-supervisor-know");
   }
 }
 
@@ -152,17 +169,50 @@ function kaDate() {
 function scenarioDate() {
   console.log('scenarioDate called');
   const scenarioDate = document.getElementById('scenarioDate');
-
   const checked_dateTime = document.querySelector('input[name = "available-date"]:checked');
 
   if(checked_dateTime != null){
     // localStorage.setItem('bookingTogetherDateName', checked_dateTime.value);
     localStorage.setItem('bookingScenarioDateSelected', checked_dateTime.value);
 
-    const attr = scenarioDate.getAttributeNode("disabled");
-    if (attr) scenarioDate.removeAttributeNode(attr);
+    const attrDisabled = scenarioDate.getAttributeNode("disabled");
+    if (attrDisabled) scenarioDate.removeAttributeNode(attrDisabled);
     scenarioDate.setAttribute("aria-disabled", "false");
     scenarioDate.classList.remove("class", "govuk-button--disabled");
+  }
+
+  if (checked_dateTime.value === 'Other') {
+    scenarioDate.setAttribute("href", "more-scenario-booking-dates");
+  } else {
+    scenarioDate.setAttribute("href", "let-supervisor-know");
+  }
+}
+
+// MORE DATES
+function moreDates() {
+  console.log('moreDates called');
+  const moreDates = document.getElementById('moreDates');
+  const checked_dateTime = document.querySelector('input[name = "available-date"]:checked');
+
+  if(checked_dateTime != null){
+    // localStorage.setItem('bookingTogetherDateName', checked_dateTime.value);
+    if (pageUrlPath === '/booking/version-3/more-booking-dates') {
+      localStorage.setItem('bookingTogetherDateName', checked_dateTime.value);
+    }
+
+    if (pageUrlPath === '/booking/version-3/more-kabooking-dates') {
+      localStorage.setItem('bookingKADateSelected', checked_dateTime.value);
+      moreDates.setAttribute("href", "booking-scenario");
+    }
+
+    if (pageUrlPath === '/booking/version-3/more-scenario-booking-dates') {
+      localStorage.setItem('bookingScenarioDateSelected', checked_dateTime.value);
+    }
+
+    const attr = moreDates.getAttributeNode("disabled");
+    if (attr) moreDates.removeAttributeNode(attr);
+    moreDates.setAttribute("aria-disabled", "false");
+    moreDates.classList.remove("class", "govuk-button--disabled");
   }
 }
 
