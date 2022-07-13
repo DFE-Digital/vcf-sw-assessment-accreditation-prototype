@@ -24,18 +24,24 @@
 
               <!-- Together -->
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="togetherRadio" name="booking-method" type="radio" value="Together" onclick="getBookingMethod()">
+                <input class="govuk-radios__input" id="togetherRadio" name="booking-method" type="radio" value="Together" onclick="getBookingMethod()" aria-describedby="booking-together-hint">
                 <label class="govuk-label govuk-radios__label" for="togetherRadio">
-                  Together
+                  <strong>Together</strong>
                 </label>
+                <div id="booking-together-hint" class="govuk-hint govuk-radios__hint">
+                  Please allow 1 hour 30 minutes for the Knowledge Assessment, a 1 hour break and 1 hour 30 minutes for the Simulated Assessment.
+                </div>
               </div>
 
               <!-- Separately -->
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="separatelyRadio" name="booking-method" type="radio" value="Separately" onclick="getBookingMethod()">
+                <input class="govuk-radios__input" id="separatelyRadio" name="booking-method" type="radio" value="Separately" onclick="getBookingMethod()" aria-describedby="booking-separately-hint">
                 <label class="govuk-label govuk-radios__label" for="separatelyRadio">
-                  Separately
+                  <strong>Separately</strong>
                 </label>
+                <div id="booking-separately-hint" class="govuk-hint govuk-radios__hint">
+                  The Knowledge Assessment will take 1 hour 30 minutes, and the Simulated Assessment will take 1 hour 30 minutes.
+                </div>
               </div>
             </div>
 

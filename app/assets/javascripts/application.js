@@ -11,17 +11,8 @@ const pageUrlPath = window.location.pathname;
 
 $(document).ready(function () {
   window.GOVUKFrontend.initAll();
-  console.log('currentURL', currentURL);
-  console.log('pageUrlPath', pageUrlPath);
-
-  // if (currentURL === 'let-supervisor-know') {
-  //   const supervisorEmailValue = document.getElementById('supervisor-email').value;
-  //   if (supervisorEmailValue !== "") {
-  //     localStorage.setItem('supervisorEmail', false);
-  //     localStorage.setItem('supervisorEmailValue', supervisorEmailValue);
-  //     // console.log('supervisorEmailValue', supervisorEmailValue);
-  //   }
-  // }
+  // console.log('currentURL', currentURL);
+  // console.log('pageUrlPath', pageUrlPath);
 
   if (currentURL === 'booking-confirmation') {
     // if (localStorage.getItem('bookingTogetherDate'))
