@@ -12,10 +12,26 @@ const pageUrlPath = window.location.pathname;
 $(document).ready(function () {
   window.GOVUKFrontend.initAll();
   // console.log('currentURL', currentURL);
-  // console.log('pageUrlPath', pageUrlPath);
+  console.log('pageUrlPath', pageUrlPath);
 
+  if ((pageUrlPath === '/') || (pageUrlPath === '/booking/version-3/') || (pageUrlPath === '/booking/version-3/start') || (pageUrlPath === '/booking/version-3/data-cleared')) {
+    const backLink = document.getElementById('backLink').style.display = 'none';
+  }
+
+  // If on the Check answers page
   if (currentURL === 'booking-confirmation') {
-    // if (localStorage.getItem('bookingTogetherDate'))
+
+    // Set the correct dates to show
+    if (localStorage.getItem('bookingMethodName') === "Together") {
+      localStorage.removeItem('bookingKADateSelected');
+      localStorage.removeItem('bookingScenarioDateSelected');
+    }
+    if (localStorage.getItem('bookingMethodName') === "Separately") {
+      localStorage.removeItem('bookingTogetherDateName');
+    }
+
+    // ################
+
     if (localStorage.getItem('bookingMethodName')) {
       document.getElementById('bookingMethod').classList.remove('hidden');
       document.getElementById('bookingMethodSelected').innerHTML = localStorage.getItem('bookingMethodName');
@@ -37,9 +53,61 @@ $(document).ready(function () {
     }
 
     if (localStorage.getItem('supervisorEmailValue')) {
-      document.getElementById('supervisorEmail').classList.remove('hidden');
+      document.getElementById('changeManagersEmail').classList.remove('hidden');
+      document.getElementById('addManagersEmail').classList.add('hidden');
       document.getElementById('supervisorEmailValue').innerHTML = localStorage.getItem('supervisorEmailValue');
+    } else {
+      document.getElementById('changeManagersEmail').classList.add('hidden');
+      document.getElementById('addManagersEmail').classList.remove('hidden');
+      document.getElementById('supervisorEmailValue').innerHTML = "Not provided"
     }
+
+    // Changes to details
+    // ##################
+
+    // changeBookingMethod
+    var changeBookingMethod = document.getElementById('changeBookingMethod');
+    changeBookingMethod.addEventListener('click', changeBookingMethodScript);
+    function changeBookingMethodScript(){
+      localStorage.setItem('changingBookingMethod', true);
+    }
+
+    // changeAssessmentDate
+    var changeAssessmentDate = document.getElementById('changeAssessmentDate');
+    changeAssessmentDate.addEventListener('click', changeAssessmentDateScript);
+    function changeAssessmentDateScript(){
+      localStorage.setItem('changingAssessmentDate', true);
+    }
+
+    // changeKAssessmentDate
+    var changeKAssessmentDate = document.getElementById('changeKAssessmentDate');
+    changeKAssessmentDate.addEventListener('click', changeKAssessmentDateScript);
+    function changeKAssessmentDateScript(){
+      localStorage.setItem('changingKAssessmentDate', true);
+    }
+
+    // changeKAssessmentDate
+    var changeScenarioDate = document.getElementById('changeScenarioDate');
+    changeScenarioDate.addEventListener('click', changeScenarioDateScript);
+    function changeScenarioDateScript(){
+      localStorage.setItem('changingScenarioDate', true);
+    }
+
+    // changeManagersEmail
+    var changeManagersEmail = document.getElementById('changeManagersEmail');
+    changeManagersEmail.addEventListener('click', changeManagersEmailScript);
+    function changeManagersEmailScript(){
+      localStorage.setItem('changingManagersEmail', true);
+    }
+
+
+    // ####################
+    // Remove unused localStorage
+    localStorage.removeItem('changingBookingMethod');
+    localStorage.removeItem('changingAssessmentDate');
+    localStorage.removeItem('changingKAssessmentDate');
+    localStorage.removeItem('changingScenarioDate');
+    localStorage.removeItem('changingManagersEmail');
   }
 
   if (currentURL === 'booking-dashboard') {
@@ -51,9 +119,16 @@ $(document).ready(function () {
     localStorage.removeItem('supervisorEmailValue');
   }
 
-  if ((pageUrlPath === '/') || (pageUrlPath === '/booking/version-3/') || (pageUrlPath === '/booking/version-3/start') || (pageUrlPath === '/booking/version-3/data-cleared')) {
-    const backLink = document.getElementById('backLink').style.display = 'none';
+  if ( (pageUrlPath === '/booking/version-3/let-supervisor-know') && (localStorage.getItem('changingManagersEmail')) ) {
+    const getSupervisorEmailFormAction = document.getElementById('getSupervisorEmailFormAction');
+    const supervisorEmailText = document.getElementById('supervisor-email');
+    getSupervisorEmailFormAction.setAttribute("action", "/booking/version-3/booking-confirmation");
+    supervisorEmailText.value = localStorage.getItem('supervisorEmailValue');
   }
+
+  // #################################
+  // Preload Functions
+  getSupervisorEmail();
 })
 
 
@@ -79,9 +154,13 @@ function signIn() {
 
 // Get the method of booking
 function getBookingMethod() {
-  console.log('Booking Method BTN clicked');
+  // console.log('Booking Method BTN clicked');
+  // console.log('localStorage.getItem(\'bookingMethodName\')', localStorage.getItem('bookingMethodName'));
   const ele = document.getElementsByName('booking-method');
   const getBookingMethodBtn = document.getElementById('getBookingMethodBtn');
+  const bookingMethodFormAction = document.getElementById('bookingMethodFormAction');
+  const kaDateBtn = document.getElementById('kaDate');
+  const scenarioDateBtn = document.getElementById('scenarioDate');
 
   if ((document.getElementById('togetherRadio').checked) || (document.getElementById('separatelyRadio').checked)) {
     const attr = getBookingMethodBtn.getAttributeNode("disabled");
@@ -96,23 +175,55 @@ function getBookingMethod() {
     }
 
     if (document.getElementById('togetherRadio').checked) {
-      localStorage.removeItem('bookingKADateSelected');
-      localStorage.removeItem('bookingScenarioDateSelected');
+      // if (localStorage.getItem('bookingMethodName') === "Together") {
+      //   console.log('You already selected "Togther"');
+      //   bookingMethodFormAction.setAttribute("action", "/booking/version-3/booking-confirmation");
+      // } else {
+        // localStorage.removeItem('bookingKADateSelected');
+        // localStorage.removeItem('bookingScenarioDateSelected');
+      // }
     }
     if (document.getElementById('separatelyRadio').checked) {
-      localStorage.removeItem('bookingTogetherDateName');
+      // localStorage.removeItem('bookingTogetherDateName');
     }
+    // } else if () {
+
+    console.log('>>>>>>>>>>>>',localStorage.getItem('bookingTogetherDateName'));
+    console.log('Together >>>>>>>>>>>>', localStorage.getItem('bookingMethodName') === "Together");
+    console.log('Separately >>>>>>>>>>>>', localStorage.getItem('bookingMethodName') === "Separately");
+
+    if (localStorage.getItem('changingBookingMethod')) {
+      console.log('YESSSS');
+      if ( (localStorage.getItem('bookingTogetherDateName')) && (localStorage.getItem('bookingMethodName') === "Together") ) {
+        bookingMethodFormAction.setAttribute("action", "/booking/version-3/booking-confirmation");
+
+      } else if ( (localStorage.getItem('bookingKADateSelected') && localStorage.getItem('bookingScenarioDateSelected')) && (localStorage.getItem('bookingMethodName') === "Separately") ) {
+        console.log('BOTH DATES EXISTS');
+        bookingMethodFormAction.setAttribute("action", "/booking/version-3/booking-confirmation");
+
+      } else if ( (localStorage.getItem('bookingKADateSelected') && !localStorage.getItem('bookingScenarioDateSelected')) && (localStorage.getItem('bookingMethodName') === "Separately") ) {
+        bookingMethodFormAction.setAttribute("action", "/booking/version-3/booking-scenario");
+
+      } else if ( (!localStorage.getItem('bookingKADateSelected')) && (!localStorage.getItem('bookingScenarioDateSelected')) && (localStorage.getItem('bookingMethodName') === "Separately") ) {
+        bookingMethodFormAction.setAttribute("action", "/booking/version-3/booking-knowledge-assessment");
+
+      } else {
+        bookingMethodFormAction.setAttribute("action", "/booking/version-3/booking-method/answer");
+        // localStorage.removeItem('bookingTogetherDateName');
+      }
+    } else {
+      console.log('NOOOOOO ');
+      // bookingMethodFormAction.setAttribute("action", "/booking/version-3/let-supervisor-know");
+    }
+
   }
 }
 
 // function getBookedDatesforTogether() {
 function bookingDate() {
-  // console.log('bookingDate called');
+  console.log('bookingDate funtion called');
   const bookingDate = document.getElementById('bookingDate');
-  // const attrHref = bookingDate.getAttributeNode("href");
   const checked_dateTime = document.querySelector('input[name = "available-date"]:checked');
-
-  console.log('checked_dateTime', checked_dateTime.value);
 
   if(checked_dateTime !== null){
     localStorage.setItem('bookingTogetherDateName', checked_dateTime.value);
@@ -123,13 +234,14 @@ function bookingDate() {
     bookingDate.classList.remove("class", "govuk-button--disabled");
   }
 
-  // const continueBtn = document.getElementById('bookingDate');
-  // const attr = continueBtn.getAttributeNode("href");
-
   if (checked_dateTime.value === 'Other') {
     bookingDate.setAttribute("href", "more-booking-dates");
   } else {
-    bookingDate.setAttribute("href", "let-supervisor-know");
+    if ( (pageUrlPath === '/booking/version-3/booking-dates') && (localStorage.getItem('changingAssessmentDate') || localStorage.getItem('bookingTogetherDateName')) ) {
+      bookingDate.setAttribute("href", "booking-confirmation");
+    } else {
+      bookingDate.setAttribute("href", "let-supervisor-know");
+    }
   }
 }
 
@@ -140,7 +252,6 @@ function kaDate() {
   const checked_dateTime = document.querySelector('input[name = "available-date"]:checked');
 
   if(checked_dateTime != null){
-    // localStorage.setItem('bookingTogetherDateName', checked_dateTime.value);
     localStorage.setItem('bookingKADateSelected', checked_dateTime.value);
 
     const attrDisabled = kaDate.getAttributeNode("disabled");
@@ -152,7 +263,11 @@ function kaDate() {
   if (checked_dateTime.value === 'Other') {
     kaDate.setAttribute("href", "more-kabooking-dates");
   } else {
-    kaDate.setAttribute("href", "booking-scenario");
+    if ( (pageUrlPath === '/booking/version-3/booking-knowledge-assessment') && (localStorage.getItem('changingKAssessmentDate') && localStorage.getItem('bookingScenarioDateSelected')) ) {
+      kaDate.setAttribute("href", "booking-confirmation");
+    } else {
+      kaDate.setAttribute("href", "booking-scenario");
+    }
   }
 }
 
@@ -163,7 +278,6 @@ function scenarioDate() {
   const checked_dateTime = document.querySelector('input[name = "available-date"]:checked');
 
   if(checked_dateTime != null){
-    // localStorage.setItem('bookingTogetherDateName', checked_dateTime.value);
     localStorage.setItem('bookingScenarioDateSelected', checked_dateTime.value);
 
     const attrDisabled = scenarioDate.getAttributeNode("disabled");
@@ -175,7 +289,11 @@ function scenarioDate() {
   if (checked_dateTime.value === 'Other') {
     scenarioDate.setAttribute("href", "more-scenario-booking-dates");
   } else {
-    scenarioDate.setAttribute("href", "let-supervisor-know");
+    if ( pageUrlPath === '/booking/version-3/booking-scenario' && localStorage.getItem('supervisorEmailValue') ) {
+      scenarioDate.setAttribute("href", "booking-confirmation");
+    } else {
+      scenarioDate.setAttribute("href", "let-supervisor-know");
+    }
   }
 }
 
@@ -186,18 +304,35 @@ function moreDates() {
   const checked_dateTime = document.querySelector('input[name = "available-date"]:checked');
 
   if(checked_dateTime != null){
-    // localStorage.setItem('bookingTogetherDateName', checked_dateTime.value);
     if (pageUrlPath === '/booking/version-3/more-booking-dates') {
       localStorage.setItem('bookingTogetherDateName', checked_dateTime.value);
+
+      if (localStorage.getItem('changingAssessmentDate') || localStorage.getItem('supervisorEmailValue')) {
+        moreDates.setAttribute("href", "booking-confirmation");
+      } else {
+        moreDates.setAttribute("href", "let-supervisor-know");
+      }
     }
 
     if (pageUrlPath === '/booking/version-3/more-kabooking-dates') {
       localStorage.setItem('bookingKADateSelected', checked_dateTime.value);
       moreDates.setAttribute("href", "booking-scenario");
+
+      if (localStorage.getItem('changingKAssessmentDate') || localStorage.getItem('supervisorEmailValue')) {
+        moreDates.setAttribute("href", "booking-confirmation");
+      } else {
+        moreDates.setAttribute("href", "let-supervisor-know");
+      }
     }
 
     if (pageUrlPath === '/booking/version-3/more-scenario-booking-dates') {
       localStorage.setItem('bookingScenarioDateSelected', checked_dateTime.value);
+
+      if (localStorage.getItem('changingScenarioDate') || localStorage.getItem('supervisorEmailValue')) {
+        moreDates.setAttribute("href", "booking-confirmation");
+      } else {
+        moreDates.setAttribute("href", "let-supervisor-know");
+      }
     }
 
     const attr = moreDates.getAttributeNode("disabled");
@@ -233,14 +368,20 @@ function clearData() {
   localStorage.removeItem('bookingKADateSelected');
   localStorage.removeItem('bookingScenarioDateSelected');
   localStorage.removeItem('supervisorEmailValue');
+
+  localStorage.removeItem('changingBookingMethod');
+  localStorage.removeItem('changingAssessmentDate');
+  localStorage.removeItem('changingKAssessmentDate');
+  localStorage.removeItem('changingScenarioDate');
+  localStorage.removeItem('changingManagersEmail');
+
   window.location.href = '/booking/version-3/data-cleared';
 }
 
 // Skip buttons
 function skipBookingScenarioDate() {
-  localStorage.removeItem('bookingScenarioDateName');
+  localStorage.removeItem('bookingScenarioDateSelected');
 }
-
 function skipSupervisorEmail() {
   localStorage.removeItem('supervisorEmailValue');
 }

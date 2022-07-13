@@ -96,7 +96,7 @@ function populateDateList(urlDetected) {
 
     let elementsToInsert = [];
     let mainDatesLates = dates.mainDates.at(-1); // The last item in the main array
-    // let moreDates = dates.mainDates.slice(-1)[0]; // The last item in the main array
+    // let mainDatesLates = dates.mainDates.slice(-1)[0]; // The last item in the main array
     console.log('.mainDatesLates.moreDates',mainDatesLates.moreDates);
     let moreDates = mainDatesLates.moreDates
     console.log('moreDates',moreDates.moreDates);
