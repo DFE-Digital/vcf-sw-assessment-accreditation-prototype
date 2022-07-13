@@ -10,9 +10,9 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
-      <h1 class="govuk-heading-l">Check your answers before sending your booking request</h1>
+      <h1 class="govuk-heading-l">Check your details</h1>
 
-      <h2 class="govuk-heading-m">Booking details</h2>
+      <!-- <h2 class="govuk-heading-m">Check your details</h2> -->
 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
@@ -90,7 +90,7 @@
         <!-- Simulated practice Assessment date -->
         <div class="govuk-summary-list__row hidden" id="bookingScenarioDate">
           <dt class="govuk-summary-list__key">
-            Simulated practice Assessment date
+            Simulated practice assessment date
           </dt>
           <dd class="govuk-summary-list__value">
             <div id="bookingScenarioDateSelected"></div>
@@ -105,7 +105,7 @@
         <!-- supervisor's email -->
         <div class="govuk-summary-list__row hidden" id="supervisorEmail">
           <dt class="govuk-summary-list__key">
-            Your supervisor's email address
+            Your manager's email address
           </dt>
           <dd class="govuk-summary-list__value">
             <span id="supervisorEmailValue"></span>
@@ -118,18 +118,15 @@
         </div>
       </dl>
 
-      <h2 class="govuk-heading-m">Now send your application</h2>
+      <h2 class="govuk-heading-m">Now confirm your booking</h2>
 
-      <p class="govuk-body">By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+      <!-- <p class="govuk-body">By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.</p> -->
 
       <form action="booking-dashboard_v3" method="post" novalidate>
-
         <input type="hidden" name="answers-checked" value="true">
-
         <button class="govuk-button" data-module="govuk-button">
           Confirm booking
         </button>
-
       </form>
 
     </div>
