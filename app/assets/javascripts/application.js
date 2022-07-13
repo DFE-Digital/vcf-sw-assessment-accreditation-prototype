@@ -233,7 +233,7 @@ function clearData() {
   localStorage.removeItem('bookingKADateSelected');
   localStorage.removeItem('bookingScenarioDateSelected');
   localStorage.removeItem('supervisorEmailValue');
-  window.location.href = '/data-cleared';
+  window.location.href = '/booking/version-3/data-cleared';
 }
 
 // Skip buttons
