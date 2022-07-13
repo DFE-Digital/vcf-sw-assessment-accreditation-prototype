@@ -152,7 +152,7 @@ function kaDate() {
   if (checked_dateTime.value === 'Other') {
     kaDate.setAttribute("href", "more-kabooking-dates");
   } else {
-    kaDate.setAttribute("href", "let-supervisor-know");
+    kaDate.setAttribute("href", "booking-scenario");
   }
 }
 
