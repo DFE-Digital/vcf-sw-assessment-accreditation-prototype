@@ -43,3 +43,12 @@ hr {
   margin: 30px 0 30px;
   width: 100%;
 }
+
+.wide {
+  display: inline-grid;
+  width: 38vw;
+  @media (max-width: 40.0525em) {
+    display: block;
+    width: 100%;
+  }
+}
