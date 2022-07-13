@@ -2,69 +2,87 @@ let dates = {
   mainDates:[
     {
       "dateID": "0",
-      "dateDayName": "Monday",
-      "dateDay": "4",
+      "dateDayName": "Tuesday",
+      "dateDay": "26",
       "dateMonth": "July",
       "dateYear": "2022",
       "dateTime": "09:30",
       "dateUnavailable": false
     },
     {
-      "dateID": "00",
-      "dateDayName": "Monday",
-      "dateDay": "4",
+      "dateID": "1",
+      "dateDayName": "Wednesday",
+      "dateDay": "27",
       "dateMonth": "July",
       "dateYear": "2022",
       "dateTime": "14:30",
       "dateUnavailable": false
     },
     {
-      "dateID": "1",
-      "dateDayName": "Tuesday",
-      "dateDay": "5",
+      "dateID": "2",
+      "dateDayName": "Thursday",
+      "dateDay": "28",
       "dateMonth": "July",
       "dateYear": "2022",
       "dateTime": "12:30",
       "dateUnavailable": false
     },
     {
-      "dateID": "2",
-      "dateDayName": "Wednesday",
-      "dateDay": "6",
+      "dateID": "3",
+      "dateDayName": "Friday",
+      "dateDay": "29",
       "dateMonth": "July",
       "dateYear": "2022",
       "dateTime": "09:30",
       "dateAvailability": true
     },
     {
-      "dateID": "3",
-      "dateDayName": "Thursday",
-      "dateDay": "7",
-      "dateMonth": "July",
+      "dateID": "4",
+      "dateDayName": "Monday",
+      "dateDay": "1",
+      "dateMonth": "August",
       "dateYear": "2022",
       "dateTime": "14:00",
       "dateUnavailable": false
     },
     {
-      "dateID": "4",
-      "dateDayName": "Friday",
-      "dateDay": "8",
-      "dateMonth": "July",
+      "dateID": "5",
+      "dateDayName": "Tuesday",
+      "dateDay": "2",
+      "dateMonth": "August",
       "dateYear": "2022",
       "dateTime": "12:30",
       "dateUnavailable": false
     },
     {
-      "dateID": "5",
-      "dateDayName": "Monday",
-      "dateDay": "10",
-      "dateMonth": "July",
+      "dateID": "6",
+      "dateDayName": "Wednesday",
+      "dateDay": "3",
+      "dateMonth": "August",
       "dateYear": "2022",
       "dateTime": "14:00",
       "dateUnavailable": false
     },
     {
-      "dateID": "000",
+      "dateID": "7",
+      "dateDayName": "Thursday",
+      "dateDay": "4",
+      "dateMonth": "August",
+      "dateYear": "2022",
+      "dateTime": "09:30",
+      "dateUnavailable": false
+    },
+    {
+      "dateID": "8",
+      "dateDayName": "Friday",
+      "dateDay": "5",
+      "dateMonth": "August",
+      "dateYear": "2022",
+      "dateTime": "14:00",
+      "dateUnavailable": false
+    },
+    {
+      "dateID": "9",
       "dateDayName": "Other",
       "dateUnavailable": false,
       "otherIdentifier": true
@@ -74,17 +92,17 @@ let dates = {
         {
           "dateID": "00",
           "dateDayName": "Monday",
-          "dateDay": "4",
-          "dateMonth": "November",
+          "dateDay": "8",
+          "dateMonth": "August",
           "dateYear": "2022",
-          "dateTime": "14:30",
+          "dateTime": "09:30",
           "dateUnavailable": false
         },
         {
           "dateID": "1",
           "dateDayName": "Tuesday",
-          "dateDay": "5",
-          "dateMonth": "November",
+          "dateDay": "9",
+          "dateMonth": "August",
           "dateYear": "2022",
           "dateTime": "12:30",
           "dateUnavailable": false
@@ -92,10 +110,28 @@ let dates = {
         {
           "dateID": "2",
           "dateDayName": "Wednesday",
-          "dateDay": "6",
-          "dateMonth": "November",
+          "dateDay": "10",
+          "dateMonth": "August",
           "dateYear": "2022",
           "dateTime": "09:30",
+          "dateAvailability": true
+        },
+        {
+          "dateID": "3",
+          "dateDayName": "Thursday",
+          "dateDay": "11",
+          "dateMonth": "August",
+          "dateYear": "2022",
+          "dateTime": "09:30",
+          "dateAvailability": true
+        },
+        {
+          "dateID": "4",
+          "dateDayName": "Friday",
+          "dateDay": "12",
+          "dateMonth": "August",
+          "dateYear": "2022",
+          "dateTime": "12:30",
           "dateAvailability": true
         }
       ]

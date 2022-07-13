@@ -90,14 +90,18 @@ function populateDateList(urlDetected) {
 
   if (dateList2 && ((correctUrl === 'moreDates') || (correctUrl === 'moreKaDates') || (correctUrl === 'moreScenarioDates'))) {
 
-    console.log('moreDates loaded >>>>>>>>>>>>>');
-    console.log('correctUrl',correctUrl);
-    // console.log('dates.mainDates.moreDates', dates.mainDates[8].moreDates);
+    // console.log('moreDates loaded >>>>>>>>>>>>>');
+    // console.log('correctUrl:',correctUrl);
+    // console.log('dates.mainDates.moreDates', dates.mainDates[10].moreDates);
 
     let elementsToInsert = [];
-    let moreDates = dates.mainDates[8].moreDates;
+    let mainDatesLates = dates.mainDates.at(-1); // The last item in the main array
+    // let moreDates = dates.mainDates.slice(-1)[0]; // The last item in the main array
+    console.log('.mainDatesLates.moreDates',mainDatesLates.moreDates);
+    let moreDates = mainDatesLates.moreDates
+    console.log('moreDates',moreDates.moreDates);
     for (let i = 0; i < moreDates.length; i++) {
-      console.log('moreDates[i]', moreDates[i]);
+      // console.log('moreDates[i:]', moreDates[i]);
 
       var radio = document.createElement('input');
       var label = document.createElement('label');
