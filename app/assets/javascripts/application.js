@@ -319,8 +319,11 @@ function moreDates() {
       localStorage.setItem('bookingKADateSelected', checked_dateTime.value);
       moreDates.setAttribute("href", "booking-scenario");
 
-      if (localStorage.getItem('changingKAssessmentDate') || localStorage.getItem('supervisorEmailValue')) {
+      // if (localStorage.getItem('changingKAssessmentDate') || localStorage.getItem('supervisorEmailValue')) {
+      if ( (localStorage.getItem('changingKAssessmentDate') && localStorage.getItem('changingScenarioDate')) || localStorage.getItem('supervisorEmailValue')) {
         moreDates.setAttribute("href", "booking-confirmation");
+      } else if ( (localStorage.getItem('changingKAssessmentDate') && !localStorage.getItem('changingScenarioDate')) ) {
+        moreDates.setAttribute("href", "booking-scenario");
       } else {
         moreDates.setAttribute("href", "let-supervisor-know");
       }
