@@ -194,6 +194,7 @@ function getBookingMethod() {
 
     if (localStorage.getItem('changingBookingMethod')) {
       console.log('YESSSS');
+      // if ( (localStorage.getItem('bookingTogetherDateName')) && (localStorage.getItem('bookingMethodName') === "Together") ) {
       if ( (localStorage.getItem('bookingTogetherDateName')) && (localStorage.getItem('bookingMethodName') === "Together") ) {
         bookingMethodFormAction.setAttribute("action", "/booking/version-3/booking-confirmation");
 
@@ -237,7 +238,7 @@ function bookingDate() {
   if (checked_dateTime.value === 'Other') {
     bookingDate.setAttribute("href", "more-booking-dates");
   } else {
-    if ( (pageUrlPath === '/booking/version-3/booking-dates') && (localStorage.getItem('changingAssessmentDate') || localStorage.getItem('bookingTogetherDateName')) ) {
+    if ( (pageUrlPath === '/booking/version-3/booking-dates') && (localStorage.getItem('changingAssessmentDate') && localStorage.getItem('bookingTogetherDateName')) ) {
       bookingDate.setAttribute("href", "booking-confirmation");
     } else {
       bookingDate.setAttribute("href", "let-supervisor-know");
