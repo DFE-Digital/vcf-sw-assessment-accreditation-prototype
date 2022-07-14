@@ -12,7 +12,7 @@ const pageUrlPath = window.location.pathname;
 $(document).ready(function () {
   window.GOVUKFrontend.initAll();
   // console.log('currentURL', currentURL);
-  console.log('pageUrlPath', pageUrlPath);
+  // console.log('pageUrlPath', pageUrlPath);
 
   if ((pageUrlPath === '/') || (pageUrlPath === '/booking/version-3/') || (pageUrlPath === '/booking/version-3/start') || (pageUrlPath === '/booking/version-3/data-cleared')) {
     const backLink = document.getElementById('backLink').style.display = 'none';
@@ -119,16 +119,16 @@ $(document).ready(function () {
     localStorage.removeItem('supervisorEmailValue');
   }
 
-  if ( (pageUrlPath === '/booking/version-3/let-supervisor-know') && (localStorage.getItem('changingManagersEmail')) ) {
+  // if ( (pageUrlPath === '/booking/version-3/let-supervisor-know') && (localStorage.getItem('changingManagersEmail')) ) {
+  if ( pageUrlPath === '/booking/version-3/let-supervisor-know' ) {
     const getSupervisorEmailFormAction = document.getElementById('getSupervisorEmailFormAction');
     const supervisorEmailText = document.getElementById('supervisor-email');
     getSupervisorEmailFormAction.setAttribute("action", "/booking/version-3/booking-confirmation");
-    supervisorEmailText.value = localStorage.getItem('supervisorEmailValue');
+    if (localStorage.getItem('supervisorEmailValue')) {
+      supervisorEmailText.value = localStorage.getItem('supervisorEmailValue');
+      getSupervisorEmail();
+    }
   }
-
-  // #################################
-  // Preload Functions
-  getSupervisorEmail();
 })
 
 
@@ -139,13 +139,13 @@ function signIn() {
   const signInBtn = document.getElementById('signInBtn');
 
   if (signInEmail !== '' && signInPassword !== '') {
-    console.log('Ok all good');
+    // console.log('Ok all good');
     const attr = signInBtn.getAttributeNode("disabled");
     if (attr) signInBtn.removeAttributeNode(attr);
     signInBtn.setAttribute("aria-disabled", "false");
     signInBtn.classList.remove("class", "govuk-button--disabled");
   } else {
-    console.log('hey, you did not enter anything');
+    // console.log('hey, you did not enter anything');
     signInBtn.setAttribute("disabled", "disabled");
     signInBtn.setAttribute("aria-disabled", "true");
     signInBtn.classList.add("class", "govuk-button--disabled");
@@ -154,7 +154,6 @@ function signIn() {
 
 // Get the method of booking
 function getBookingMethod() {
-  // console.log('Booking Method BTN clicked');
   // console.log('localStorage.getItem(\'bookingMethodName\')', localStorage.getItem('bookingMethodName'));
   const ele = document.getElementsByName('booking-method');
   const getBookingMethodBtn = document.getElementById('getBookingMethodBtn');
@@ -174,32 +173,11 @@ function getBookingMethod() {
       }
     }
 
-    if (document.getElementById('togetherRadio').checked) {
-      // if (localStorage.getItem('bookingMethodName') === "Together") {
-      //   console.log('You already selected "Togther"');
-      //   bookingMethodFormAction.setAttribute("action", "/booking/version-3/booking-confirmation");
-      // } else {
-        // localStorage.removeItem('bookingKADateSelected');
-        // localStorage.removeItem('bookingScenarioDateSelected');
-      // }
-    }
-    if (document.getElementById('separatelyRadio').checked) {
-      // localStorage.removeItem('bookingTogetherDateName');
-    }
-    // } else if () {
-
-    console.log('>>>>>>>>>>>>',localStorage.getItem('bookingTogetherDateName'));
-    console.log('Together >>>>>>>>>>>>', localStorage.getItem('bookingMethodName') === "Together");
-    console.log('Separately >>>>>>>>>>>>', localStorage.getItem('bookingMethodName') === "Separately");
-
     if (localStorage.getItem('changingBookingMethod')) {
-      console.log('YESSSS');
-      // if ( (localStorage.getItem('bookingTogetherDateName')) && (localStorage.getItem('bookingMethodName') === "Together") ) {
       if ( (localStorage.getItem('bookingTogetherDateName')) && (localStorage.getItem('bookingMethodName') === "Together") ) {
         bookingMethodFormAction.setAttribute("action", "/booking/version-3/booking-confirmation");
 
       } else if ( (localStorage.getItem('bookingKADateSelected') && localStorage.getItem('bookingScenarioDateSelected')) && (localStorage.getItem('bookingMethodName') === "Separately") ) {
-        console.log('BOTH DATES EXISTS');
         bookingMethodFormAction.setAttribute("action", "/booking/version-3/booking-confirmation");
 
       } else if ( (localStorage.getItem('bookingKADateSelected') && !localStorage.getItem('bookingScenarioDateSelected')) && (localStorage.getItem('bookingMethodName') === "Separately") ) {
@@ -210,11 +188,7 @@ function getBookingMethod() {
 
       } else {
         bookingMethodFormAction.setAttribute("action", "/booking/version-3/booking-method/answer");
-        // localStorage.removeItem('bookingTogetherDateName');
       }
-    } else {
-      console.log('NOOOOOO ');
-      // bookingMethodFormAction.setAttribute("action", "/booking/version-3/let-supervisor-know");
     }
 
   }
@@ -222,7 +196,6 @@ function getBookingMethod() {
 
 // function getBookedDatesforTogether() {
 function bookingDate() {
-  console.log('bookingDate funtion called');
   const bookingDate = document.getElementById('bookingDate');
   const checked_dateTime = document.querySelector('input[name = "available-date"]:checked');
 
@@ -248,7 +221,6 @@ function bookingDate() {
 
 // function getBookedDatesforKA() {
 function kaDate() {
-  console.log('kaDate called');
   const kaDate = document.getElementById('kaDate');
   const checked_dateTime = document.querySelector('input[name = "available-date"]:checked');
 
@@ -274,7 +246,6 @@ function kaDate() {
 
 // function getBookedDatesforScenario() {
 function scenarioDate() {
-  console.log('scenarioDate called');
   const scenarioDate = document.getElementById('scenarioDate');
   const checked_dateTime = document.querySelector('input[name = "available-date"]:checked');
 
@@ -300,7 +271,6 @@ function scenarioDate() {
 
 // MORE DATES
 function moreDates() {
-  console.log('moreDates called');
   const moreDates = document.getElementById('moreDates');
   const checked_dateTime = document.querySelector('input[name = "available-date"]:checked');
 

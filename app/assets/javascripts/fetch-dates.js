@@ -39,7 +39,7 @@ request.onerror = function() {
 
 request.send();
 function populateDateList(urlDetected) {
-  console.log('populateDateList called');
+  // console.log('populateDateList called');
 
   // THE JSON ARRAY.
   var dateList = document.getElementById('date');
@@ -48,8 +48,8 @@ function populateDateList(urlDetected) {
 
   if (dateList && ((correctUrl !== 'moreDates') || (correctUrl !== 'moreKaDates') || (correctUrl !== 'moreScenarioDates'))) {
 
-    console.log('dates.mainDates',dates.mainDates);
-    console.log('correctUrl',correctUrl);
+    // console.log('dates.mainDates',dates.mainDates);
+    // console.log('correctUrl',correctUrl);
 
     let elementsToInsert = [];
     for (var i = 0; i < dates.mainDates.length; i++) {
@@ -97,9 +97,9 @@ function populateDateList(urlDetected) {
     let elementsToInsert = [];
     let mainDatesLates = dates.mainDates.at(-1); // The last item in the main array
     // let mainDatesLates = dates.mainDates.slice(-1)[0]; // The last item in the main array
-    console.log('.mainDatesLates.moreDates',mainDatesLates.moreDates);
+    // console.log('.mainDatesLates.moreDates',mainDatesLates.moreDates);
     let moreDates = mainDatesLates.moreDates
-    console.log('moreDates',moreDates.moreDates);
+    // console.log('moreDates',moreDates.moreDates);
     for (let i = 0; i < moreDates.length; i++) {
       // console.log('moreDates[i:]', moreDates[i]);
 
