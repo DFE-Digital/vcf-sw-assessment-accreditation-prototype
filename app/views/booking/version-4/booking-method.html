@@ -1,0 +1,64 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  How would you like to take the two parts of the assessment?
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form id="bookingMethodFormAction" action="/booking/version-3/booking-method/answer" method="post">
+        <div class="govuk-form-group">
+
+          <!-- List of booking dates -->
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                How would you like to take the two parts of the assessment?
+              </h1>
+            </legend>
+
+            <p>You can take the knowledge assessment and the simulated practice assessment together on the same day or separately. Each part takes 1 hour 30 minutes.</p>
+
+            <div class="govuk-radios" id="bookingMethod" data-module="govuk-radios">
+
+              <!-- Together -->
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="togetherRadio" name="booking-method" type="radio" value="Together" onclick="getBookingMethod()" aria-describedby="booking-together-hint">
+                <label class="govuk-label govuk-radios__label" for="togetherRadio">
+                  <strong>Together</strong>
+                </label>
+                <!-- <div id="booking-together-hint" class="govuk-hint govuk-radios__hint">
+                  Please allow 1 hour 30 minutes for the knowledge assessment, a 1 hour break and 1 hour 30 minutes for the simulated practice assessment.
+                </div> -->
+              </div>
+
+              <!-- Separately -->
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="separatelyRadio" name="booking-method" type="radio" value="Separately" onclick="getBookingMethod()" aria-describedby="booking-separately-hint">
+                <label class="govuk-label govuk-radios__label" for="separatelyRadio">
+                  <strong>Separately</strong>
+                </label>
+                <!-- <div id="booking-separately-hint" class="govuk-hint govuk-radios__hint">
+                  The knowledge assessment will take 1 hour 30 minutes, and the simulated practice assessment will take 1 hour 30 minutes.
+                </div> -->
+              </div>
+            </div>
+
+          </fieldset>
+        </div>
+
+        <hr />
+
+        <p>More details are on the <a class="govuk link" href="/booking/version-3/#assessmentsExplanation" target="_blank">knowledge and simulated practice assessments</a>.</p>
+
+        <button id="getBookingMethodBtn" disabled="disabled" aria-disabled="true" class="govuk-button govuk-button--disabled" type="submit" data-module="govuk-button">
+          Continue
+        </button>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

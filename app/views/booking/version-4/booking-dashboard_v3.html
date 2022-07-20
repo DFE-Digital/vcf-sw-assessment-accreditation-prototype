@@ -1,0 +1,45 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Booking complete
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+          <div class="govuk-panel govuk-panel--confirmation">
+            <h1 class="govuk-panel__title">
+              Booking complete
+            </h1>
+            <div class="govuk-panel__body">
+              Your reference number<br><strong>502135326</strong>
+            </div>
+          </div>
+
+          <div id="assessment-hint" class="govuk-hint">
+            <p>We’ve sent you a confirmation email.</p>
+          </div>
+
+        </fieldset>
+
+        <hr />
+
+        <p class="govuk-body">Once you have completed this session, please clear the data by clicking the button below.</p>
+
+        <button class="govuk-button govuk-button--warning" data-module="govuk-button" onclick="clearData()">
+          Clear data
+        </button>
+      </div>
+
+      <!-- <a href="#" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+        Change booking
+      </a> -->
+    </div>
+  </div>
+
+{% endblock %}

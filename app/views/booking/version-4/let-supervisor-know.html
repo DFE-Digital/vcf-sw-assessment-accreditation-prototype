@@ -1,0 +1,38 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  What’s your supervisor’s email address?
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form id="getSupervisorEmailFormAction" action="/booking/version-3/booking-confirmation" method="post">
+        <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="event-name">
+              What’s your manager's email address?
+            </label>
+          </h1>
+          <p>Your manager will be sent an email letting them you know you’ve booked an assessment.</p>
+          <div id="event-name-hint" class="govuk-hint">
+            (optional)
+          </div>
+          <input class="govuk-input govuk-!-width-three-quarters" id="supervisor-email" name="supervisor-email" type="email" autocomplete="off" aria-describedby="supervisor-email-hint" onkeydown="getSupervisorEmail()">
+        </div>
+
+        <hr />
+
+        <div class="govuk-button-group">
+          <button id="getSupervisorEmailBtn" disabled="disabled" aria-disabled="true" class="govuk-button govuk-button--disabled" data-module="govuk-button">Continue</button>
+
+          <a id="skipTellingSupervisor" href="booking-confirmation" class="govuk-link" data-module="govuk-button" onclick="skipSupervisorEmail()">
+            Skip
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

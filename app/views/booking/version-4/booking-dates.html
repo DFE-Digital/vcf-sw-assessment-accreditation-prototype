@@ -1,0 +1,48 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Book an assessment
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form id="bookingDatesFormAction" action="/booking/version-3/booking-dates/answer" method="post">
+        <div class="govuk-form-group">
+
+          <!-- List of booking dates -->
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                When would you like to take your full assessment?
+              </h1>
+            </legend>
+
+            <p class="govuk-body">Your full assessment will be split into two parts on the same day. The knowledge assessment will take 1 hour 30 minutes. The simulated practice assessment will also take 1 hour 30 minutes.</p>
+
+            <div class="govuk-radios" id="date" data-module="govuk-radios"></div>
+
+          </fieldset>
+        </div>
+
+        <hr />
+
+        <a id="bookingDate" href="let-supervisor-know" disabled="disabled" aria-disabled="true" class="govuk-button govuk-button--disabled" data-module="govuk-button">
+          Continue
+        </a>
+        <!-- <a id="bookingDate" href="#" disabled="disabled" aria-disabled="true" class="govuk-button govuk-button--disabled">
+          Continue
+        </a> -->
+        <!-- <button id="bookingDate" disabled="disabled" aria-disabled="true" class="govuk-button govuk-button--disabled">
+          Continue
+        </button> -->
+        <!-- <button id="bookingDate" disabled="disabled" aria-disabled="true" class="govuk-button govuk-button--disabled" data-module="govuk-button" type="button">
+          Continue
+        </button> -->
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
