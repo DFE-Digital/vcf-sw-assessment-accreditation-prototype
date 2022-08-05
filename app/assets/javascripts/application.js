@@ -14,7 +14,10 @@ $(document).ready(function () {
   // console.log('currentURL', currentURL);
   // console.log('pageUrlPath', pageUrlPath);
 
-  if ((pageUrlPath === '/') || (pageUrlPath === '/booking/version-3/') || (pageUrlPath === '/booking/version-3/start') || (pageUrlPath === '/booking/version-3/data-cleared')) {
+  if ( (pageUrlPath === '/') ||
+      (pageUrlPath === '/booking/version-3/') || (pageUrlPath === '/booking/version-3/start') || (pageUrlPath === '/booking/version-3/data-cleared') ||
+      (pageUrlPath === '/booking/version-4/') || (pageUrlPath === '/booking/version-4/start') || (pageUrlPath === '/booking/version-4/data-cleared')
+    ) {
     const backLink = document.getElementById('backLink').style.display = 'none';
   }
 
